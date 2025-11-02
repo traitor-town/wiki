@@ -1,3 +1,4 @@
 .vitepress/dist
 .vitepress/build
+.vitepress/cache
 node_modules
