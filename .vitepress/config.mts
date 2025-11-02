@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "traitor town community wiki",
   description: "an unofficial wiki for the roblox game Traitor Town",
+  base: "/wiki/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
