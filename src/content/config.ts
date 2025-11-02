@@ -6,13 +6,6 @@ const maps = defineCollection({
   schema: z.object({
     title: z.string(),
     creators: z.string(),
-    authors: z.array(
-      z.object({
-        name: z.string(),
-        slug: z.string(),
-        avatar: z.string(),
-      })
-    ),
   }),
 });
 
