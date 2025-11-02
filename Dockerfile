@@ -11,7 +11,7 @@ RUN bun install --production
 FROM base AS build-deps
 RUN bun install
 
-FROM base AS build
+FROM build-deps AS build
 COPY . .
 RUN bun run build
 
