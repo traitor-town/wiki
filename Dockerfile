@@ -5,13 +5,13 @@ WORKDIR /app
 # Therefore, the `-deps` steps will be skipped if only the source code changes.
 COPY package.json bun.lock ./
 
-FROM oven/bun:1.3.1-slim AS prod-deps
+FROM base AS prod-deps
 RUN bun install --production
 
-FROM oven/bun:1.3.1-slim AS build-deps
+FROM base AS build-deps
 RUN bun install
 
-FROM oven/bun:1.3.1-slim AS build
+FROM base AS build
 COPY . .
 RUN bun run build
 
