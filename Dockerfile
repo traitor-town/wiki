@@ -1,4 +1,4 @@
-FROM node:lts AS base
+FROM oven/bun:1.3.1-slim AS base
 WORKDIR /app
 
 # By copying only the package.json and package-lock.json here, we ensure that the following `-deps` steps are independent of the source code.
@@ -15,7 +15,7 @@ FROM oven/bun:1.3.1-slim AS build
 COPY . .
 RUN bun run build
 
-FROM base AS runtime
+FROM node:lts AS runtime
 COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 
