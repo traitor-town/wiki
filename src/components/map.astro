@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Map = CollectionEntry<"maps">;
+
+type Props = {
+  map: Map;
+};
+
+const { map } = Astro.props;
+---
+
+<li>
+  <a href={`/wiki/maps/${map.slug}`}>
+    <Image src={map.data.image} alt={map.data.title} inferSize />
+  </a>
+</li>

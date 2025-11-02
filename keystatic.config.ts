@@ -14,6 +14,11 @@ export default config({
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         creators: fields.text({ label: "creators" }),
+        image: fields.image({
+          label: "Image (the one shown in map voting UI)",
+          directory: "src/assets/images/maps/",
+          publicPath: "/src/assets/images/maps/",
+        }),
         content: fields.markdoc({
           label: "Content",
           options: {

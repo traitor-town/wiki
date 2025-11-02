@@ -1,22 +1,27 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
-import Layout from '../../../layouts/Layout.astro';
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import License from "src/components/license.astro";
 
 const { slug } = Astro.params;
-if (!slug) throw new Error('Slug not found');
-const map = await getEntry('maps', slug);
+if (!slug) throw new Error("Slug not found");
+const map = await getEntry("maps", slug);
 
-if (!map) throw new Error('No post found for this slug');
+if (!map) throw new Error("No post found for this slug");
 const { Content } = await map.render();
 
 // Generate static pages
 export async function getStaticPaths() {
-  const maps = await getCollection('maps');
-  return maps.map(post => ({ params: { slug: post.slug } }));
+  const maps = await getCollection("maps");
+  return maps.map((post) => ({ params: { slug: post.slug } }));
 }
 ---
 
 <Layout title={map.data.title}>
-  <h1>{map.data.title}</h1>
-  <Content />
+  <a href="/">&lt;- home</a>
+  <article class="prose">
+    <h1>{map.data.title}</h1>
+    <Content />
+  </article>
+  <License />
 </Layout>
