@@ -1,25 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Map from "src/components/map.astro";
 
-const maps = await getCollection('maps');
+const maps = await getCollection("maps");
 ---
 
 <Layout title="traitor town community wiki">
   <div>
-    <h1>welcome to the traitor town community wiki!</h1>
+    <h1 class="text-2xl">welcome to the traitor town community wiki!</h1>
     <p>
-      we're still getting started, so it looks a bit bare, but we'll have a better looking website soon-ish
+      we're still getting started, so it looks a bit bare, but we'll have a
+      better looking website soon-ish
     </p>
     <h2>maps</h2>
-    <ul>
-      {
-        maps.map(map => (
-          <li>
-            <a href={`/wiki/maps/${map.slug}`}>{map.data.title}</a>
-          </li>
-        ))
-      }
+    <ul
+      class="pt-2 pl-4 pr-4 grid grid-cols-4 gap-4 md:grid-cols-6 lg:grid-cols-8 justify-between"
+    >
+      {maps.map((map) => <Map map={map} />)}
     </ul>
   </div>
 </Layout>
